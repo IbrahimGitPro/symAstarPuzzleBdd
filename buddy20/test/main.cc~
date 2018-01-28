@@ -1,0 +1,61 @@
+/****************************************************** 
+ * File  : main.cc   
+ * Desc. : test 1 of SubBDD implementation 
+ * Author: Rune M. Jensen
+ * Date  : 8/20/01
+ ******************************************************/
+
+#include <stream.h>
+#include <string.h>
+#include <stdio.h> 
+#include <stdlib.h>
+#include <bdd.h>
+
+int main(void)  {
+
+  int map[6];
+ 
+  map[5] = 0;
+  map[4] = 0;
+  map[3] = 1;
+  map[2] = 1;
+  map[1] = 2;
+  map[0] = 2;
+
+  // initialize bdd package
+  bdd_init(1000,100);
+  bdd_setvarnum(6);
+
+  bdd_setvarpart(map);
+
+  bdd x0,x1,x2,x3,x4,x5,q,g;
+
+  x0 = bdd_ithvar(0);
+  x1 = bdd_ithvar(1); 
+  x2 = bdd_ithvar(2);
+  x3 = bdd_ithvar(3);
+  x4 = bdd_ithvar(4);
+  x5 = bdd_ithvar(5);
+
+  g = x3 & x4;
+
+  q = x0;
+ 
+
+  cout << " lower : " << bdd_lowerboundP(q,g) << endl;
+  cout << " upper : " << bdd_upperboundP(q,g) << endl;
+
+  cout << bdd_stateswithinP(q,g,1) << endl;
+
+ bdd_done();
+}
+
+ 
+
+
+ 
+
+
+
+
+
