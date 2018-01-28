@@ -8,4 +8,5 @@ To compile the code:
 
 To use the code:
 ./BDDASTAR Problem_instance
+
 Example: ./BDDASTAR Problems/15puzzle16.txt
